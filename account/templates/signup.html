@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+
+{% block content %}
+회원가입 페이지입니다. 
+
+<h1>Sign up!</h1>
+
+<form method="POST" action="{% url 'signup' %}">
+{% csrf_token %}
+
+    Username:
+    <br>
+    <input name="username" type="text">
+    <br>
+    Password:
+    <br>
+    <input name="password1" type="password">
+    <br>
+    Confirm Password:
+    <br>
+    <input name="password2" type="password">
+    <br>
+    Phone Number:
+    <br>
+    <input name="phone_num" type="text">
+    <br>
+    Name:
+    <br>
+    <input name="name" type="text">
+    <br><br>
+    <input type="submit" value="Sign up">
+</form>
+
+{% endblock %}
+
+

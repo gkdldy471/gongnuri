@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+로그인 페이지입니다.
+<h1>Login</h1>
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    
+    Username:
+    <br>
+    <input name="username" type="text">
+    <br>
+    Password:
+    <br>
+    <input name="password" type="password">
+    <br><br>
+    <input type="submit" value="Login"> 
+</form>
+
+{% endblock %}

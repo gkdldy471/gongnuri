@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load staticfiles %}
+
+<!-- 메인 화면입니다. -->
+
+<!-- <form action="">
+    <form action=""> -->
+        <!-- 테이블 value값은 영문주소로 ㅇㅇ구 검색했을 때 나오는 값으로 gu 제외하고 'ㅇㅇ'까지만 설정해씀 -->
+        <!-- <table class="table" align=center width ="700">
+            <thead>
+            </thead>
+            <tbody>
+            <tr>
+        <td colspan=6 bgcolor=#FFCD12 align=center> 지역 선택 </td>
+            </tr>
+              <tr>
+                <td><input type="checkbox" name="area" value="seoul"/>서울 전체</td>
+                <td><input type="checkbox" name="area" value="gangnam"/>강남구 </td>
+                <td><input type="checkbox" name="area" value="gangdong"/>강동구 </td>
+                <td><input type="checkbox" name="area" value="gangbuk"/>강북구 </td>
+                <td><input type="checkbox" name="area" value="gangseo"/>강서구 </td>
+                <td><input type="checkbox" name="area" value="gwanak"/>관악구 </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="area" value="gwangjin"/>광진구</td>
+                <td><input type="checkbox" name="area" value="guro"/>구로구</td>
+                <td><input type="checkbox" name="area" value="geumcheon"/>금천구</td>
+                <td><input type="checkbox" name="area" value="nowon"/>노원구</td>
+                <td><input type="checkbox" name="area" value="dobong"/>도봉구</td>
+                <td><input type="checkbox" name="area" value="dongdaemun"/>동대문구</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="area" value=dongjak/>동작구</td>
+                <td><input type="checkbox" name="area" value="mapo"/>마포구</td>
+                <td><input type="checkbox" name="area" value="seodaemun"/>서대문구</td>
+                <td><input type="checkbox" name="area" value="seocho"/>서초구</td>
+                <td><input type="checkbox" name="area" value="seongdong"/>성동구</td>
+                <td><input type="checkbox" name="area" value="seongbuk"/>성북구</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="area" value="songpa"/>송파구</td>
+                <td><input type="checkbox" name="area" value="yangcheon"/>양천구</td>
+                <td><input type="checkbox" name="area" value="yeongdeungpo"/>영등포구</td>
+                <td><input type="checkbox" name="area" value="yongsan"/>용산구</td>
+                <td><input type="checkbox" name="area" value="eunpyeong"/>은평구</td>
+                <td><input type="checkbox" name="area" value="jongno"/>종로구</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="area" value="jung"/>중구</td>
+                <td><input type="checkbox" name="area" value="jungnang"/>중랑구</td>
+              </tr>
+              <tr bgcolor="#FFFFA2">
+                <td align=center>선택한 지역 : </td>
+                <td colspan=5 id="select"></td>
+              </tr>
+              <tr>
+                <td colspan=6 align=right><input type="submit" name="submit" value="검색"></td>
+              </tr>
+            </tbody>
+        </table>          
+</form> -->
+
+
+<img src="{% static 'gongnuri.gif' %}" alt="">
+
+<form method="GET">
+      {{ filter.form.address.label_tag }}
+          <div>
+            {% for choice in filter.form.address %}
+              <label class="checkbox-inline">
+                {{ choice.tag }} {{ choice.choice_label }}
+              </label>
+            {% endfor %}
+          </div>
+  <button type="submit">search!</button>
+</form>
+
+<div class ="container">
+  {% for building in filter.qs %}
+    <h1>{{ building.room_name }}</h1>
+    <p>{{ building.address }}</p>
+    <p><a href="{% url 'place_detail' building.id %}">상세보기</a></p>
+  {% endfor %} 
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% block content %}
+
+
+<br>
+<div class="container">
+    <form method="POST" action="{% url 'create' %}" enctype="multipart/form-data" a href="{% url 'complete' %}">
+        {% csrf_token %}
+        <h4>신청자명: </h4>
+        {{user.profile.name}} 
+        <h4>건물 이름: </h4>
+        <input type="text" name="room_name">
+        <br>
+        <br>
+        <h4>연락가능 번호: </h4>
+        <input type="text" name="tele_num">
+        <br>
+        <br>
+        <h4>주소: </h4>
+        <input type="text" name="address">
+        <br>
+        <br>
+        <h4>상세 이미지: </h4>
+        <br>
+        <input type="file" name="room_img">
+        <br>
+        <br>
+        <input class="btn btn-bright" type="submit" value="건물 등록" >
+        
+    </form>
+</div>
+
+{% endblock %}
